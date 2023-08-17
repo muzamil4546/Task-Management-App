@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:task_management_app/modules/auth/login_screen.dart';
-import 'package:task_management_app/modules/auth/signup_screen.dart';
+import 'package:task_management_app/modules/auth/views/login_screen.dart';
+import 'package:task_management_app/modules/auth/views/signup_screen.dart';
 import 'package:task_management_app/utils/colors.dart';
 
 class LandingScreen extends StatelessWidget {
@@ -11,7 +11,6 @@ class LandingScreen extends StatelessWidget {
     ColorUtils colorUtils = ColorUtils();
 
     final screenHeight = MediaQuery.of(context).size.height;
-    final screenWidth = MediaQuery.of(context).size.width;
     return Scaffold(
       body: SafeArea(
         child: Column(
@@ -43,7 +42,7 @@ class LandingScreen extends StatelessWidget {
                       const SizedBox(
                         height: 25,
                       ),
-                      Container(
+                      SizedBox(
                         height: screenHeight * .4,
                         child: Image.asset(
                           'assets/Header image1.jpg',
@@ -52,7 +51,7 @@ class LandingScreen extends StatelessWidget {
                       const SizedBox(
                         height: 50,
                       ),
-                      Container(
+                      SizedBox(
                         width: 360,
                         height: 50,
                         child: ElevatedButton(
@@ -75,7 +74,7 @@ class LandingScreen extends StatelessWidget {
                       const SizedBox(
                         height: 20,
                       ),
-                      Container(
+                      SizedBox(
                         width: 360,
                         height: 50,
                         child: ElevatedButton(

@@ -101,6 +101,7 @@ class _AddTaskAlertDialogState extends State<AddTaskAlertDialog> {
                   if (taskTitle == null || taskTitle.isEmpty) {
                     return 'Title required';
                   }
+                  return null;
                 },
               ),
               const SizedBox(height: 15),

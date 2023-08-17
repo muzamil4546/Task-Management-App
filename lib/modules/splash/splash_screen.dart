@@ -14,7 +14,7 @@ class _SplashScreenState extends State<SplashScreen> {
   ColorUtils colorUtils = ColorUtils();
 
   @override
-  void initState(){
+  void initState() {
     super.initState();
     splashServices.isLogin(context);
   }
@@ -30,15 +30,16 @@ class _SplashScreenState extends State<SplashScreen> {
               child: Image.asset('assets/splash logo1.png'),
             ),
             const SizedBox(height: 60),
-            Text('Streamline Your Day, Seamlessly',
+            Text(
+              'Streamline Your Day, Seamlessly',
               style: TextStyle(
                   fontSize: 25,
                   color: colorUtils.darkBlueColor,
-                  fontWeight: FontWeight.bold),)
+                  fontWeight: FontWeight.bold),
+            )
           ],
         ),
       ),
     );
   }
 }
-

@@ -1,9 +1,10 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:task_management_app/modules/auth/landing_screen.dart';
+import 'package:task_management_app/modules/auth/views/landing_screen.dart';
+import 'package:task_management_app/modules/global_widgets/custom_form_field.dart';
 import 'package:task_management_app/utils/colors.dart';
-import '../../utils/utilities.dart';
+import '../../../utils/utilities.dart';
 
 class SignUpScreen extends StatefulWidget {
   final bool loading;
@@ -40,11 +41,6 @@ class _SignUpScreenState extends State<SignUpScreen> {
 
   @override
   Widget build(BuildContext context) {
-    bool _isValidEmail(String email) {
-      final emailRegExp = RegExp(r'^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$');
-      return emailRegExp.hasMatch(email);
-    }
-
     final screenHeight = MediaQuery.of(context).size.height;
     return Scaffold(
       body: SafeArea(
@@ -88,25 +84,14 @@ class _SignUpScreenState extends State<SignUpScreen> {
                       key: _formKey,
                       child: Column(
                         children: [
-                          TextFormField(
-                            decoration: InputDecoration(
-                                suffixIcon: Icon(
-                                  Icons.person_2_outlined,
-                                  color: colorUtils.lightBlueColor,
-                                ),
-                                label: const Text(
-                                  'First Name',
-                                  style: TextStyle(
-                                    fontSize: 18,
-                                    color: Colors.grey,
-                                  ),
-                                ),
-                                focusedBorder: const UnderlineInputBorder(
-                                    borderSide:
-                                        BorderSide(color: Colors.grey))),
-                            controller: _firstNameController,
-                            keyboardType: TextInputType.text,
+                          CustomFormField(
+                            label: const Text('First Name'),
+                            suffixIcon: const Icon(Icons.person_2_outlined),
+                            textEditingController: _firstNameController,
+                            textInputType: TextInputType.text,
                             textInputAction: TextInputAction.next,
+                            focusedBorder: const UnderlineInputBorder(
+                                borderSide: BorderSide(color: Colors.grey)),
                             validator: (value) {
                               if (value == null || value.isEmpty) {
                                 return 'First name is required';
@@ -117,25 +102,14 @@ class _SignUpScreenState extends State<SignUpScreen> {
                             },
                           ),
                           SizedBox(height: screenHeight * .02),
-                          TextFormField(
-                            decoration: InputDecoration(
-                                suffixIcon: Icon(
-                                  Icons.person_2_outlined,
-                                  color: colorUtils.lightBlueColor,
-                                ),
-                                label: const Text(
-                                  'Last Name',
-                                  style: TextStyle(
-                                    fontSize: 18,
-                                    color: Colors.grey,
-                                  ),
-                                ),
-                                focusedBorder: const UnderlineInputBorder(
-                                    borderSide:
-                                        BorderSide(color: Colors.grey))),
-                            controller: _lastNameController,
-                            keyboardType: TextInputType.text,
+                          CustomFormField(
+                            label: const Text('Last Name'),
+                            suffixIcon: const Icon(Icons.person_2_outlined),
+                            textEditingController: _lastNameController,
+                            textInputType: TextInputType.text,
                             textInputAction: TextInputAction.next,
+                            focusedBorder: const UnderlineInputBorder(
+                                borderSide: BorderSide(color: Colors.grey)),
                             validator: (value) {
                               if (value == null || value.isEmpty) {
                                 return 'Last name is required';
@@ -146,25 +120,14 @@ class _SignUpScreenState extends State<SignUpScreen> {
                             },
                           ),
                           SizedBox(height: screenHeight * .02),
-                          TextFormField(
-                            decoration: InputDecoration(
-                                suffixIcon: Icon(
-                                  Icons.phone_outlined,
-                                  color: colorUtils.lightBlueColor,
-                                ),
-                                label: const Text(
-                                  'Phone No',
-                                  style: TextStyle(
-                                    fontSize: 18,
-                                    color: Colors.grey,
-                                  ),
-                                ),
-                                focusedBorder: const UnderlineInputBorder(
-                                    borderSide:
-                                        BorderSide(color: Colors.grey))),
-                            keyboardType: TextInputType.number,
-                            controller: _phoneController,
+                          CustomFormField(
+                            label: const Text('Phone No'),
+                            suffixIcon: const Icon(Icons.phone_outlined),
+                            textEditingController: _phoneController,
+                            textInputType: TextInputType.text,
                             textInputAction: TextInputAction.next,
+                            focusedBorder: const UnderlineInputBorder(
+                                borderSide: BorderSide(color: Colors.grey)),
                             validator: (value) {
                               if (value == null || value.isEmpty) {
                                 return 'Phone is required';
@@ -175,25 +138,14 @@ class _SignUpScreenState extends State<SignUpScreen> {
                             },
                           ),
                           SizedBox(height: screenHeight * .02),
-                          TextFormField(
-                            decoration: InputDecoration(
-                                suffixIcon: Icon(
-                                  Icons.email_outlined,
-                                  color: colorUtils.lightBlueColor,
-                                ),
-                                label: const Text(
-                                  'Email',
-                                  style: TextStyle(
-                                    fontSize: 18,
-                                    color: Colors.grey,
-                                  ),
-                                ),
-                                focusedBorder: const UnderlineInputBorder(
-                                    borderSide:
-                                        BorderSide(color: Colors.grey))),
-                            controller: _emailController,
-                            keyboardType: TextInputType.emailAddress,
+                          CustomFormField(
+                            label: const Text('Email'),
+                            suffixIcon: const Icon(Icons.email_outlined),
+                            textEditingController: _emailController,
+                            textInputType: TextInputType.text,
                             textInputAction: TextInputAction.next,
+                            focusedBorder: const UnderlineInputBorder(
+                                borderSide: BorderSide(color: Colors.grey)),
                             validator: (email) {
                               if (email == null || email.isEmpty) {
                                 return 'Email is required';
@@ -204,26 +156,15 @@ class _SignUpScreenState extends State<SignUpScreen> {
                             },
                           ),
                           SizedBox(height: screenHeight * .02),
-                          TextFormField(
-                            decoration: InputDecoration(
-                                suffixIcon: Icon(
-                                  Icons.lock_outline,
-                                  color: colorUtils.lightBlueColor,
-                                ),
-                                label: const Text(
-                                  'Password',
-                                  style: TextStyle(
-                                    fontSize: 18,
-                                    color: Colors.grey,
-                                  ),
-                                ),
-                                focusedBorder: const UnderlineInputBorder(
-                                    borderSide:
-                                        BorderSide(color: Colors.grey))),
-                            obscureText: true,
-                            controller: _passwordController,
-                            keyboardType: TextInputType.visiblePassword,
+                          CustomFormField(
+                            label: const Text('Password'),
+                            suffixIcon: const Icon(Icons.lock_outline),
+                            textEditingController: _passwordController,
+                            textInputType: TextInputType.text,
                             textInputAction: TextInputAction.next,
+                            obscureText: true,
+                            focusedBorder: const UnderlineInputBorder(
+                                borderSide: BorderSide(color: Colors.grey)),
                             validator: (value) {
                               if (value == null || value.isEmpty) {
                                 return 'Password is required';
@@ -234,7 +175,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                             },
                           ),
                           SizedBox(height: screenHeight * .06),
-                          Container(
+                          SizedBox(
                             height: 50,
                             width: double.infinity,
                             child: ElevatedButton(
@@ -273,6 +214,11 @@ class _SignUpScreenState extends State<SignUpScreen> {
     );
   }
 
+  bool _isValidEmail(String email) {
+    final emailRegExp = RegExp(r'^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$');
+    return emailRegExp.hasMatch(email);
+  }
+
   void signUp() async {
     setState(() {
       loading = true;
@@ -282,17 +228,20 @@ class _SignUpScreenState extends State<SignUpScreen> {
             email: _emailController.text.toString(),
             password: _passwordController.text.toString())
         .then((value) async {
-          await FirebaseFirestore.instance.collection('Users').doc(value.user!.uid).set({
-            'firstName': _firstNameController.text,
-            'lastName': _lastNameController.text,
-            'phone': _phoneController.text,
-            'email': _emailController.text,
-            'password': _passwordController.text,
-          });
+      await FirebaseFirestore.instance
+          .collection('Users')
+          .doc(value.user!.uid)
+          .set({
+        'firstName': _firstNameController.text,
+        'lastName': _lastNameController.text,
+        'phone': _phoneController.text,
+        'email': _emailController.text,
+        'password': _passwordController.text,
+      });
       resetFields();
       Utils().successToast('User Registered Successfully');
-          Navigator.pushReplacement(context,
-              MaterialPageRoute(builder: (context) => const LandingScreen()));
+      Navigator.pushReplacement(context,
+          MaterialPageRoute(builder: (context) => const LandingScreen()));
     }).onError((error, stackTrace) {
       Utils().toastMessage(error.toString());
     });

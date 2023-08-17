@@ -76,28 +76,26 @@ class _UpdateTaskAlertDialogState extends State<UpdateTaskAlertDialog> {
         child: Form(
           child: Column(
             children: [
-              Container(
-                child: TextFormField(
-                  controller: titleController,
-                  keyboardType: TextInputType.text,
-                  decoration: InputDecoration(
-                    hintText: 'Title',
-                    enabledBorder: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(15),
-                      borderSide:
-                          BorderSide(width: 1.5, color: Colors.grey.shade500),
-                    ),
-                    focusedBorder: OutlineInputBorder(
-                      borderSide: BorderSide(
-                          width: 1.5, color: colorUtils.buttonBorderColor),
-                      borderRadius: BorderRadius.circular(15),
-                    ),
-                    contentPadding: const EdgeInsets.symmetric(
-                        horizontal: 18, vertical: 18),
-                    icon: Icon(
-                      CupertinoIcons.square_list,
-                      color: colorUtils.buttonBorderColor,
-                    ),
+              TextFormField(
+                controller: titleController,
+                keyboardType: TextInputType.text,
+                decoration: InputDecoration(
+                  hintText: 'Title',
+                  enabledBorder: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(15),
+                    borderSide:
+                        BorderSide(width: 1.5, color: Colors.grey.shade500),
+                  ),
+                  focusedBorder: OutlineInputBorder(
+                    borderSide: BorderSide(
+                        width: 1.5, color: colorUtils.buttonBorderColor),
+                    borderRadius: BorderRadius.circular(15),
+                  ),
+                  contentPadding:
+                      const EdgeInsets.symmetric(horizontal: 18, vertical: 18),
+                  icon: Icon(
+                    CupertinoIcons.square_list,
+                    color: colorUtils.buttonBorderColor,
                   ),
                 ),
               ),

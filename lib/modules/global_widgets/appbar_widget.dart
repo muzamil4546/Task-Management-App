@@ -15,8 +15,7 @@ class CustomAppBar extends StatelessWidget {
       actions: [
         const Padding(padding: EdgeInsets.only(right: 15)),
         IconButton(
-            onPressed: (){},
-            icon: const Icon(Icons.calendar_month_outlined))
+            onPressed: () {}, icon: const Icon(Icons.calendar_month_outlined))
       ],
     );
   }
